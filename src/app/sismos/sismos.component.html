@@ -1,0 +1,21 @@
+<h5 style="text-align: center;">Informacion sobre los ultimos 3 sismos en chile: </h5>
+<div *ngIf="dolares!= null; else esperaa">
+    <table border="1" class="table table-dark table-sm">
+    <thead>
+        <tr>
+        <td>Fecha</td>
+        <td>Magnitud</td>
+        <td>Referencia Geográfica</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dolar of dolares; let i = index">
+        <td *ngIf="i==0 || i==1 || i==2">{{dolar.Fecha}}</td>
+        <td *ngIf="i==0 || i==1 || i==2">{{dolar.Magnitud}}</td>
+        <td *ngIf="i==0 || i==1 || i==2">{{dolar.RefGeografica}}</td>
+        
+        </tr>
+    </tbody>
+    </table>
+</div>
+<ng-template #esperaa><p>Cargando...</p></ng-template>

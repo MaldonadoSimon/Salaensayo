@@ -1,0 +1,106 @@
+<div style="background-color:rgb(121, 61, 61) ;">
+    <div class="row pt-5">
+        <div class="col-4">
+            <img src="assets/sala.webp" alt="asd" style="height:300px ;width:auto;padding:10px ">
+        </div>
+        <div class="col-8 pb-5">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-2" *ngFor="let sala of salas ">
+                    <div *ngIf="disponible(sala); else ocupado">
+                        <button (click)="seleccionarSala(sala)">{{sala.horario}}</button>
+                    </div>
+                    <ng-template #ocupado>
+                        <button style="background-color:yellowgreen" (click)="seleccionarSala(sala)">{{sala.horario}}</button>
+                    </ng-template>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        <h3>Cambio de horario de las salas</h3>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+                    <label>Codigo:</label><br>
+                    <input type="number" [(ngModel)]="sala.codigo"><br>
+                    <label>Horario:</label><br>
+                    <input type="text" [(ngModel)]="sala.horario"><br>
+                    <label>Ocupado:</label><br>
+                    <input type="boolean" [(ngModel)]="sala.ocupado"><br>
+                    <button (click)="agregarSala()">Agregar</button>
+                    <button (click)="modificarSala()">Modificar</button>
+                    <button (click)="eliminarSala(sala.codigo)">Eliminar</button>
+                </table>
+                    <ng-template #sinarticulos>
+                        <p>No hay articulos</p>
+                    </ng-template>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div>
+            
+        </div>
+
+        <div class="pb-3">
+                <div class="row">
+                    <div class="col-12 text-center p-4">
+                        <h2>Equipamiento Sala:</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-10">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Equipo</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let prod of articulos">
+                                    <td>{{prod.codigo}}</td>
+                                    <td>{{prod.equipo}}</td>
+                                    <td>{{prod.marca}}</td>
+                                    <td><button (click)="borrar(prod.codigo)">Eliminar</button></td>
+                                    <td><button (click)="seleccionar(prod)">Seleccionar</button></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        <div class="pb-5">
+            <h3>Ingreso de equipamiento para salas</h3>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+                        
+                        <label>Codigo:</label><br>
+                        <input type="number" [(ngModel)]="prod.codigo"><br>
+                        <label>Equipo</label><br>
+                        <input type="text" [(ngModel)]="prod.equipo"><br>
+                        <label>Marca:</label><br>
+                        <input type="text" [(ngModel)]="prod.marca"><br>
+                        <button (click)="agregar()">Agregar</button>
+                        <button (click)="modificar()">Modificar</button>
+                    </table>
+                        <ng-template #sinarticulos>
+                            <p>No hay articulos</p>
+                        </ng-template>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,21 @@
+<h5 style="text-align: center;">Valor en USD de la criptomoneda Bitcoin: </h5>
+<div *ngIf="criptos!= null; else espera" >
+<table border="1" class="table table-dark table-sm">
+    <thead> 
+    <tr>
+        <td></td>
+        <td>valor en USD</td>
+        
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of criptos">
+        <td *ngIf="item.symbol=='BTCTUSD'">{{item.symbol}}</td>
+        <td *ngIf="item.symbol=='BTCTUSD'">{{item.openPrice}}</td>
+        
+    
+    </tr>
+    </tbody>  
+</table>
+</div>
+<ng-template #espera><p>Cargando...</p></ng-template>
